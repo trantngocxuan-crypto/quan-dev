@@ -3,12 +3,21 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Quân Dev - thiết kế và phát triển website hiện đại cho doanh nghiệp nhỏ, cửa hàng và dự án tương tác.">
+  <meta name="description" content="Quân Dev — thiết kế và phát triển website hiện đại cho doanh nghiệp nhỏ, cửa hàng, portfolio và dự án tương tác.">
   <meta name="theme-color" content="#07090d">
+  <meta name="robots" content="index,follow">
+  <meta property="og:title" content="Quân Dev — Web Design & Development">
+  <meta property="og:description" content="Website có cá tính, responsive rõ ràng và phạm vi triển khai minh bạch.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://trantngocxuan-crypto.github.io/quan-dev/">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://trantngocxuan-crypto.github.io/quan-dev/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <title>Quân Dev — Web Design & Development</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Bỏ qua điều hướng</a>
   <div class="grid-bg" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -17,7 +26,7 @@
       <span class="brand-copy"><b>QUÂN DEV</b><small>WEB DESIGN & DEVELOPMENT</small></span>
     </a>
 
-    <nav class="desktop-nav" aria-label="Điều hướng chính">
+    <nav class="desktop-nav" id="mainNav" aria-label="Điều hướng chính">
       <a href="#services">Dịch vụ</a>
       <a href="#work">Dự án</a>
       <a href="#why">Vì sao Quân Dev</a>
@@ -25,10 +34,15 @@
       <a href="#faq">FAQ</a>
     </nav>
 
-    <a class="nav-cta" href="#quote">NHẬN BÁO GIÁ <span>↗</span></a>
+    <div class="header-actions">
+      <a class="nav-cta" href="#quote">NHẬN BÁO GIÁ <span>↗</span></a>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Mở menu" aria-controls="mainNav" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
   </header>
 
-  <main id="top">
+  <main id="main">
     <section class="hero">
       <div class="hero-kicker">AVAILABLE FOR SELECTED PROJECTS <span class="status-dot"></span></div>
       <h1>
@@ -196,6 +210,7 @@
             <h3>Lam Handmade</h3>
             <p>Catalog sản phẩm handmade, popup chi tiết, giỏ hàng lưu trên thiết bị và luồng đặt hàng trực tiếp.</p>
             <div><b>HTML</b><b>CSS</b><b>JAVASCRIPT</b><b>LOCALSTORAGE</b></div>
+            <a class="project-link" href="https://trantngocxuan-crypto.github.io/Lam_Handmade/" target="_blank" rel="noopener">XEM WEBSITE LIVE ↗</a>
           </div>
         </article>
 
@@ -211,6 +226,7 @@
             <h3>Dòng Sử Việt</h3>
             <p>Timeline lịch sử kết hợp bản đồ, dữ liệu sự kiện và animation trực quan hóa hướng di chuyển.</p>
             <div><b>LEAFLET</b><b>JAVASCRIPT</b><b>OSM</b><b>ANIMATION</b></div>
+            <span class="project-link project-link-disabled">ĐANG PHÁT TRIỂN</span>
           </div>
         </article>
       </div>
@@ -309,20 +325,30 @@
           <p class="terms-note">* Đây là chính sách đề xuất cho Quân Dev. Có thể điều chỉnh theo từng hợp đồng trước khi hai bên xác nhận.</p>
         </div>
 
-        <form class="brief-card" id="briefForm">
-          <span class="micro">CLIENT BRIEF</span>
+        <form class="brief-card" id="briefForm" novalidate>
+          <span class="micro">CLIENT BRIEF / V5</span>
           <h2>GỬI YÊU CẦU<br><i>TRONG 2 PHÚT.</i></h2>
 
-          <label>Tên / doanh nghiệp
-            <input id="clientName" type="text" placeholder="Ví dụ: Tiệm Cà phê Mộc">
-          </label>
+          <div class="form-grid">
+            <label>Tên / doanh nghiệp <em>*</em>
+              <input id="clientName" name="name" type="text" autocomplete="name" placeholder="Ví dụ: Tiệm Cà phê Mộc" required>
+            </label>
 
-          <label>Bạn đang kinh doanh / làm gì?
-            <input id="businessType" type="text" placeholder="Nhà hàng, homestay, cá nhân...">
-          </label>
+            <label>Email <em>*</em>
+              <input id="clientEmail" name="email" type="email" autocomplete="email" placeholder="email@example.com" required>
+            </label>
+
+            <label>Điện thoại / Zalo <em>*</em>
+              <input id="clientPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Số để Quân Dev liên hệ" required>
+            </label>
+
+            <label>Bạn đang kinh doanh / làm gì? <em>*</em>
+              <input id="businessType" name="business" type="text" placeholder="Nhà hàng, homestay, cá nhân..." required>
+            </label>
+          </div>
 
           <label>Mục tiêu chính của website
-            <select id="goal">
+            <select id="goal" name="goal">
               <option>Giới thiệu doanh nghiệp</option>
               <option>Quảng bá một sản phẩm / dịch vụ</option>
               <option>Trưng bày và nhận đơn sản phẩm</option>
@@ -332,35 +358,56 @@
             </select>
           </label>
 
-          <label>Ngân sách dự kiến
-            <select id="budget">
-              <option>Dưới 2 triệu</option>
-              <option>2–4 triệu</option>
-              <option>4–7 triệu</option>
-              <option>Trên 7 triệu</option>
-              <option>Chưa xác định</option>
-            </select>
-          </label>
+          <div class="form-grid">
+            <label>Ngân sách dự kiến
+              <select id="budget" name="budget">
+                <option>Dưới 2 triệu</option>
+                <option>2–4 triệu</option>
+                <option>4–7 triệu</option>
+                <option>Trên 7 triệu</option>
+                <option>Chưa xác định</option>
+              </select>
+            </label>
 
-          <label>Deadline mong muốn
-            <input id="deadline" type="text" placeholder="Ví dụ: trong 2 tuần">
-          </label>
+            <label>Deadline mong muốn
+              <input id="deadline" name="deadline" type="text" placeholder="Ví dụ: trong 2 tuần">
+            </label>
+          </div>
+
+          <div class="estimate-bridge" id="estimateBridge">
+            <div>
+              <small>DỰ TOÁN ĐANG CHỌN</small>
+              <strong id="briefEstimate">Landing Page · 1 trang · 1.290.000đ</strong>
+            </div>
+            <a href="#quote">CHỈNH DỰ TOÁN ↑</a>
+          </div>
 
           <label>Mô tả thêm
-            <textarea id="briefNote" rows="5" placeholder="Website bạn thích, số trang, tính năng, nội dung đã có..."></textarea>
+            <textarea id="briefNote" name="message" rows="5" placeholder="Website bạn thích, tính năng cần có, nội dung đã chuẩn bị..."></textarea>
           </label>
 
+          <label class="consent-row">
+            <input id="briefConsent" type="checkbox" required>
+            <span>Tôi đồng ý để Quân Dev dùng thông tin này chỉ nhằm liên hệ và tư vấn cho yêu cầu trên.</span>
+          </label>
+
+          <input class="hp-field" id="websiteField" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
           <div class="brief-actions">
-            <button class="button primary" type="button" id="copyBrief">SAO CHÉP BRIEF ↗</button>
-            <a class="button" id="emailBrief" href="#">GỬI QUA EMAIL ↗</a>
+            <button class="button primary submit-brief" type="submit" id="submitBrief">
+              <span>GỬI YÊU CẦU ↗</span>
+            </button>
+            <button class="button" type="button" id="copyBrief">SAO CHÉP BRIEF</button>
           </div>
-          <div id="briefStatus" class="brief-status" aria-live="polite"></div>
+
+          <div id="briefStatus" class="brief-status" role="status" aria-live="polite"></div>
+          <p class="privacy-mini">Biểu mẫu được chuyển tới <b>minhquanhangtran@gmail.com</b>. Nếu gửi lỗi, bạn vẫn có thể sao chép brief hoặc nhắn Zalo 0975 853 340.</p>
         </form>
       </div>
     </section>
 
     <section class="section" id="faq">
-      <div class="section-label">07 / FAQ</div>
+      <div class="section-label">08 / FAQ</div>
       <div class="faq-wrap">
         <h2>CÂU HỎI<br><span>THƯỜNG GẶP.</span></h2>
         <div class="faq">
@@ -380,9 +427,9 @@
         <a href="tel:0975853340"><small>PHONE / ZALO</small><b>0975 853 340</b></a>
         <a href="mailto:minhquanhangtran@gmail.com"><small>EMAIL</small><b>minhquanhangtran@gmail.com</b></a>
         <div><small>WORKING STYLE</small><b>Remote • Việt Nam</b></div>
-        <div><small>RESPONSE</small><b>Trong 24 giờ</b></div>
+        <div><small>CONTACT</small><b>Zalo • Email • Điện thoại</b></div>
       </div>
-      <div class="contact-actions"><a class="button contact-button" href="mailto:minhquanhangtran@gmail.com?subject=Yêu%20cầu%20tư%20vấn%20website%20-%20Quân%20Dev">GỬI BRIEF QUA EMAIL ↗</a><a class="button contact-button" href="https://zalo.me/0975853340" target="_blank" rel="noopener">NHẮN ZALO ↗</a><a class="button contact-button" href="tel:0975853340">GỌI 0975 853 340 ↗</a></div>
+      <div class="contact-actions"><a class="button contact-button" href="#briefForm">GỬI YÊU CẦU ↗</a><a class="button contact-button" href="https://zalo.me/0975853340" target="_blank" rel="noopener">NHẮN ZALO ↗</a><a class="button contact-button" href="tel:0975853340">GỌI 0975 853 340 ↗</a></div>
     </section>
   </main>
 
@@ -392,6 +439,7 @@
     <a href="#top">BACK TO TOP ↑</a>
   </footer>
 
+  <noscript><div class="noscript">Website cần JavaScript để dùng bộ tính giá và biểu mẫu gửi yêu cầu.</div></noscript>
   <script src="script.js"></script>
 </body>
 </html>

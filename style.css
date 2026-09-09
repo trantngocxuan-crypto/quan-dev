@@ -317,3 +317,99 @@ footer p,footer a{color:var(--muted);font-size:8px;text-decoration:none;letter-s
   .brief-actions{display:grid}
   .contact-actions{display:grid}
 }
+
+
+/* ===== QUÂN DEV V5 / Production pass ===== */
+.skip-link{
+  position:fixed;left:14px;top:-60px;z-index:999;
+  padding:10px 14px;background:var(--cyan);color:#00130f;
+  font-size:10px;font-weight:900;text-decoration:none
+}
+.skip-link:focus{top:14px}
+.header-actions{display:flex;align-items:center;gap:10px}
+.menu-toggle{
+  display:none;width:42px;height:42px;border:1px solid var(--line);
+  background:var(--panel);padding:0;cursor:pointer;position:relative
+}
+.menu-toggle span{
+  position:absolute;left:11px;width:18px;height:1px;background:var(--ink);
+  transition:transform .2s,top .2s
+}
+.menu-toggle span:first-child{top:16px}
+.menu-toggle span:last-child{top:24px}
+.menu-open .menu-toggle span:first-child{top:20px;transform:rotate(45deg)}
+.menu-open .menu-toggle span:last-child{top:20px;transform:rotate(-45deg)}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{
+  outline:2px solid var(--yellow);
+  outline-offset:3px
+}
+
+.project-link{
+  display:inline-flex;margin-top:18px;padding-bottom:5px;
+  color:var(--cyan);border-bottom:1px solid currentColor;
+  text-decoration:none;font-size:9px;font-weight:900;letter-spacing:.08em
+}
+.project-link:hover{color:var(--pink)}
+.project-link-disabled{color:var(--muted);border-color:var(--line);cursor:default}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.brief-card label em{color:var(--pink);font-style:normal}
+.estimate-bridge{
+  display:flex;justify-content:space-between;gap:20px;align-items:center;
+  margin:18px 0;padding:15px;border:1px solid var(--line);
+  background:linear-gradient(90deg,rgba(0,245,212,.05),rgba(255,61,242,.035))
+}
+.estimate-bridge small,.estimate-bridge strong{display:block}
+.estimate-bridge small{font-size:7px;letter-spacing:.14em;color:var(--muted);margin-bottom:6px}
+.estimate-bridge strong{font-size:11px}
+.estimate-bridge a{
+  white-space:nowrap;color:var(--cyan);font-size:8px;font-weight:900;text-decoration:none
+}
+.consent-row{
+  display:flex!important;align-items:flex-start;gap:10px!important;
+  padding:12px;border:1px solid var(--line);background:var(--panel)
+}
+.consent-row input{width:auto!important;margin:2px 0 0!important;accent-color:var(--cyan)}
+.consent-row span{font-size:9px;line-height:1.55;color:var(--muted)}
+.hp-field{position:absolute!important;left:-9999px!important;opacity:0!important;width:1px!important;height:1px!important}
+.submit-brief:disabled{opacity:.55;cursor:wait}
+.brief-status{font-weight:800}
+.brief-status.success{color:var(--cyan)}
+.brief-status.error{color:var(--danger)}
+.privacy-mini{font-size:8px;color:#697482;line-height:1.55;margin:6px 0 0}
+.privacy-mini b{color:#8c96a5}
+.noscript{
+  position:fixed;left:12px;right:12px;bottom:12px;z-index:999;
+  padding:12px;background:#19110c;color:#ffd4a8;border:1px solid #75451f;
+  font-size:11px
+}
+
+@media(max-width:760px){
+  .menu-toggle{display:block}
+  .desktop-nav{
+    display:flex;position:fixed;left:0;right:0;top:68px;
+    flex-direction:column;gap:0;padding:12px 18px 20px;
+    background:rgba(7,9,13,.98);border-bottom:1px solid var(--line);
+    transform:translateY(-140%);opacity:0;pointer-events:none;
+    transition:transform .24s ease,opacity .2s ease
+  }
+  .menu-open .desktop-nav{transform:translateY(0);opacity:1;pointer-events:auto}
+  .desktop-nav a{
+    padding:15px 2px;border-bottom:1px solid var(--line);
+    font-size:11px
+  }
+  .nav-cta{font-size:0}
+  .nav-cta span{font-size:14px}
+  .form-grid{grid-template-columns:1fr}
+  .estimate-bridge{align-items:flex-start;flex-direction:column}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:.01ms!important
+  }
+}
