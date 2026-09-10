@@ -1,4 +1,4 @@
-﻿QUÂN DEV — PRO V5
+QUÂN DEV — PRO V5
 
 Mục tiêu V5:
 Biến website từ bản giới thiệu thành bản gần production để bắt đầu nhận lead thật.
@@ -34,3 +34,23 @@ Trước khi quảng bá:
 3. Kiểm tra email xác nhận FormSubmit nếu có.
 4. Test điện thoại.
 5. Test calculator -> brief -> submit.
+
+
+V5.1 MOBILE FIX:
+- Chặn horizontal overflow ở html/body
+- Fix honeypot không còn left:-9999px
+- Bổ sung min-width:0 cho grid/flex children
+- Ép media/content không vượt viewport
+- Thêm overflow-wrap cho nội dung dài/email
+
+
+V6 — PORTFOLIO PROOF UPDATE
+- Based on V5.1 mobile-stable build.
+- Added Bánh Bèo Bà Ba as the second LIVE case study.
+- Kept Lam Handmade as LIVE case study #1.
+- Reframed Dòng Sử Việt as a full-width IN DEVELOPMENT / COMING SOON case study.
+- Added proof strip: 02 website live / 01 in development / 100% hand-built.
+- New Bánh Bèo visual mock created with CSS only — no external image dependency.
+- Preserved existing pricing, estimator, brief form, contacts, SEO, mobile overflow fixes and existing public links.
+- Bánh Bèo live URL:
+  https://banhbeobaba.github.io/banh-beo-ba-ba-v1/
